@@ -1,0 +1,81 @@
+@import 'variables.scss';
+// Default
+html, body, section.main {
+	height: 100%;
+	background-color: $lg-gray;
+}
+// Input group fix
+span.input-group-text {
+	padding-top: 8px;
+	margin-bottom: 1px;
+	color: $dk-gray;
+	border-color: $dk-gray;
+	background-color: $white;
+}
+div.input-group {
+	input {
+		border-color: $dk-gray;
+		margin-top: 1px;
+	}
+}
+// Input Adjustment 
+input.form-control,
+select.form-control {
+	border-color: $dk-gray;
+	&:focus {
+		box-shadow: none;
+		border-color: $dk-gray;
+	}
+}
+// Button adjustment
+button.btn-default {
+	background-color: $white;
+	border-color: $dk-gray;
+	&:focus {
+		box-shadow: 1px 1px 10px 2px $lg-gray;
+	}
+	&:click {
+		box-shadow: 1px 1px 10px 2px $lg-gray;
+	}
+}
+button.btn-default-dark {
+	background-color: $dk-gray;
+	border-color: $dk-gray;
+	color: $white;
+	&:focus {
+		box-shadow: none;
+	}
+	&:click {
+		background-color: $lg-gray;
+		box-shadow: none;
+	}
+	&:hover {
+		color: $white;
+	}
+}
+// Checkbox adjustment
+div.form-check {
+	margin-top: 4px;
+}
+label.form-check-label {
+	font-size: 18px;
+	margin-left: 4px;
+}
+input.form-check-input {
+	margin-top: 8px;
+}
+// Decorations
+hr.content-separator {
+	width: 80%;
+	margin: 12px auto;
+	display: block;
+	border-color: $lg-gray;
+}
+td {
+	span.active {
+		color: $bs-green;
+	}
+	span.inactive {
+		color: $bs-red;
+	}
+}

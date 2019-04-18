@@ -1,0 +1,25 @@
+<div class="nav-bg">
+	<div class="container">
+		<a routerLink="/" class="title" >{{appname}}</a>
+		<nav *ngIf="isUserLogged()" >
+			<ul>
+				<li>
+					<a routerLink="/" >Home</a>
+				</li>
+				<li>
+					<a routerLink="/address" >Adresses</a>
+				</li>
+				<li>
+					<a routerLink="/people" >Peoples</a>
+				</li>
+				<li>
+					<a routerLink="/typeaddress" >Address Types</a>
+				</li>
+				<li>
+					<a routerLink="/user" >Users</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</div>
+

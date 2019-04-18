@@ -1,0 +1,44 @@
+@import '../../variables.scss';
+
+div.container {
+	height: 100%;
+	background-color: $white;
+	div.author-info {
+		top: 50%;
+		left: 50%;
+		width: 560px;
+		margin: auto;
+		padding-top: 56px ;
+		padding-bottom: 32px ;
+		position: absolute;
+		transform: translate(-50%, -50%);
+		text-align: center;
+		p {
+			margin: 32px 0px;
+			font-size: 18px;
+		}
+		table {
+			font-size: 18px;
+			margin: 24px auto;
+			tr {
+				border-bottom: 1px solid $black;
+				&:last-of-type {
+					border-bottom: none;
+				}
+				td {
+					padding: 8px 4px;
+					text-align: left;
+					font-weight: bold;
+					&:last-of-type {
+						text-align: right;
+						font-weight: normal;
+					}
+				}
+			}
+		}
+	}
+}
+
+html, body, section.main {
+	overflow: hidden;
+}

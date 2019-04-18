@@ -1,0 +1,66 @@
+<div class="container">
+	<div class="register-form">
+		<h1>Registration</h1>
+		<p>If you're new to the platform type your information and you'll be ready to go!</p>
+		<form [formGroup]="registerForm" (ngSubmit)="createNewUser()">
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text oi oi-heart"></span>
+							</div>
+							<input formControlName="name" type="text" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+							<div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+								<div *ngIf="f.name.errors.required">Please enter your name</div>
+								<div *ngIf="f.name.errors.maxlength">Invalid name</div>
+							</div>
+						</div>
+					</div>			
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text oi oi-person"></span>
+							</div>
+							<input formControlName="username" type="text" class="form-control" placeholder="Username" [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
+							<div *ngIf="submitted && f.username.errors" class="invalid-feedback">
+								<div *ngIf="f.username.errors.required">Please enter your username</div>
+								<div *ngIf="f.username.errors.maxlength">Invalid username</div>
+							</div>
+						</div>
+					</div>			
+				</div>
+			</div>			
+			<div class="row">
+				<div class="col-sm-12">
+					<div class="form-group">
+						<div class="input-group">
+							<div class="input-group-prepend">
+								<span class="input-group-text oi oi-key"></span>
+							</div>
+							<input formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+							<div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+								<div *ngIf="f.password.errors.required">Please enter your password</div>
+								<div *ngIf="f.password.errors.minlength">Invalid password</div>
+								<div *ngIf="f.password.errors.maxlength">Invalid password</div>
+							</div>
+						</div>
+					</div>			
+				</div>			
+			</div>
+			<div class="row form-buttons">
+				<div class="col-sm-12">
+					<a routerLink="/login">
+						<span class="oi oi-chevron-left"></span>
+						Go Back
+					</a>
+					<button type="submit" class="btn btn-primary">Submit</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>

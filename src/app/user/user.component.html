@@ -1,0 +1,250 @@
+<div class="container">
+
+	<div class="action-links">
+		<ul>
+			<li>
+				<a routerLink="/">
+					<span class="oi oi-chevron-left"></span>
+					Go Back
+				</a>
+			</li>
+		</ul>
+	</div>
+	
+	<div class="filter-form-container">
+		<label class="filter-form-title">
+			Filters
+		</label>
+		<div class="filters-form">
+			<form id="filters-form" [formGroup]="filterForm" (ngSubmit)="filterUser()" >
+				<div class="row">
+					<div class="col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text oi oi-heart"></span>
+								</div>
+								<input formControlName="name" type="text" class="form-control" placeholder="Name">
+							</div>
+						</div>			
+					</div>
+					<div class="col-sm-6">
+						<div class="form-group">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text oi oi-person"></span>
+								</div>
+								<input formControlName="login" type="text" class="form-control" placeholder="Username">
+							</div>
+						</div>
+					</div>			
+				</div>
+				<div class="row form-buttons">
+					<div class="col-sm-12">
+						<button type="submit" class="btn btn-default">Search</button>
+						<button class="btn btn-default-dark btn-sm call-create-from" data-toggle="modal" data-target="#createFormModal">
+							<span class="oi oi-plus" ></span>
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+	<!-- <hr *ngIf="(typeaddresses | json) != '{}'" class="content-separator"> -->
+
+	<div class="obj-list-container">
+		<!-- <div *ngIf="(typeaddresses | json) != '{}'" class="empty-obj-list">
+			No search results to show
+		</div> -->
+		<table class="table">
+			<tr>
+				<th>#</th>
+				<th>Name</th>
+				<th>Username</th>
+				<th>Options</th>
+			</tr>
+			<tr>
+				<td>1</td>
+				<td>Admin</td>
+				<td>Administrador</td>
+				<td>
+					<button data-toggle="modal" data-target="#updateFormModal" class="btn btn-default-dark btn-sm">
+						<span class="oi oi-pencil"></span>
+					</button>
+					<button class="btn btn-default-dark btn-sm">
+						<span class="oi oi-trash"></span>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td>Test</td>
+				<td>Test User</td>
+				<td>
+					<button data-toggle="modal" data-target="#updateFormModal" class="btn btn-default-dark btn-sm">
+						<span class="oi oi-pencil"></span>
+					</button>
+					<button class="btn btn-default-dark btn-sm">
+						<span class="oi oi-trash"></span>
+					</button>
+				</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td>Dummy</td>
+				<td>Dummy Xyz</td>
+				<td>
+					<button data-toggle="modal" data-target="#updateFormModal" class="btn btn-default-dark btn-sm">
+						<span class="oi oi-pencil"></span>
+					</button>
+					<button class="btn btn-default-dark btn-sm">
+						<span class="oi oi-trash"></span>
+					</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+
+</div>
+
+<div class="modal fade" id="createFormModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<form id="create-form" [formGroup]="createForm" (ngSubmit)="createUser()" >
+				<div class="modal-header">
+					<h5 class="modal-title">New Address</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-heart"></span>
+									</div>
+									<input formControlName="name" type="text" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': cfsubmitted && cf.name.errors }">
+									<div *ngIf="cfsubmitted && cf.name.errors" class="invalid-feedback">
+										<div *ngIf="cf.name.errors.required">Name is required</div>
+										<div *ngIf="cf.name.errors.maxLength">Invalid Name</div>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-person"></span>
+									</div>
+									<input formControlName="login" type="text" class="form-control" placeholder="Username" [ngClass]="{ 'is-invalid': cfsubmitted && cf.login.errors }">
+									<div *ngIf="cfsubmitted && cf.login.errors" class="invalid-feedback">
+										<div *ngIf="cf.login.errors.required">Username is required</div>
+										<div *ngIf="cf.login.errors.maxLength">Invalid Username</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-person"></span>
+									</div>
+									<input formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': cfsubmitted && cf.password.errors }">
+									<div *ngIf="cfsubmitted && cf.password.errors" class="invalid-feedback">
+										<div *ngIf="cf.password.errors.required">Password is required</div>
+										<div *ngIf="cf.password.errors.maxLength">Invalid password</div>
+										<div *ngIf="cf.password.errors.minLength">Invalid Password</div>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-success">Register</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>
+
+<div class="modal fade" id="updateFormModal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+		<div class="modal-content">
+			<form id="update-form" [formGroup]="updateForm" (ngSubmit)="updateUser()" >
+				<div class="modal-header">
+					<h5 class="modal-title">Edit Address</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					
+					<div class="row">
+						<div class="col-sm-12">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-heart"></span>
+									</div>
+									<input formControlName="name" type="text" class="form-control" placeholder="Name" [ngClass]="{ 'is-invalid': ufsubmitted && uf.name.errors }">
+									<div *ngIf="ufsubmitted && uf.name.errors" class="invalid-feedback">
+										<div *ngIf="uf.name.errors.required">Name is required</div>
+										<div *ngIf="uf.name.errors.maxLength">Invalid Name</div>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+					<div class="row">
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-person"></span>
+									</div>
+									<input formControlName="login" type="text" class="form-control" placeholder="Username" [ngClass]="{ 'is-invalid': ufsubmitted && uf.login.errors }">
+									<div *ngIf="ufsubmitted && uf.login.errors" class="invalid-feedback">
+										<div *ngIf="uf.login.errors.required">Username is required</div>
+										<div *ngIf="uf.login.errors.maxLength">Invalid Username</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-6">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-prepend">
+										<span class="input-group-text oi oi-person"></span>
+									</div>
+									<input formControlName="password" type="password" class="form-control" placeholder="Password" [ngClass]="{ 'is-invalid': ufsubmitted && uf.password.errors }">
+									<div *ngIf="ufsubmitted && uf.password.errors" class="invalid-feedback">
+										<div *ngIf="uf.password.errors.required">Password is required</div>
+										<div *ngIf="uf.password.errors.maxLength">Invalid password</div>
+										<div *ngIf="uf.password.errors.minLength">Invalid Password</div>
+									</div>
+								</div>
+							</div>
+						</div>			
+					</div>
+
+
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Cancel</button>
+					<button type="submit" class="btn btn-success">Submit</button>
+				</div>
+			</form>
+		</div>
+	</div>
+</div>

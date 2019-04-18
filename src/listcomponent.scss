@@ -1,0 +1,81 @@
+@import 'variables.scss';
+
+div.container {
+	height: 100%;
+	background-color: $white;
+	div.action-links {
+		padding-top: 12px;
+		margin-left: -24px;
+		ul {
+			font-size: 16px;
+			list-style-type: none;
+			li {
+				margin: 0 8px;
+				display: inline-block;
+				a {
+					color: $dk-gray;
+					text-decoration: none;
+					&:hover {
+						text-decoration: underline;
+					}
+					span.oi {
+						font-size: 8px;
+					}
+				}
+			}
+		}
+	}
+	div.filter-form-container {
+		width: 80%;
+		margin: 0 auto;
+		padding-bottom: 44px;
+		label.filter-form-title {
+			font-size: 24px;
+			display: inline-block;
+		}
+		div.filters-form {
+			margin-top: 8px;
+			margin-right: 12px;
+			button.btn.call-create-from {
+				float: right;
+			}
+		}
+	}
+	div.obj-list-container {
+		div.empty-obj-list {
+			margin: 32px auto;
+			font-size: 18px;
+			font-weight: bold;
+			color: $dk-gray;
+			text-align: center;
+			display: block;
+		}
+		table {
+			width: 80%;
+			margin: 0 auto;
+		}
+		table, tr, th, td {
+			border-color: $dk-gray;
+		}
+		th, td {
+			padding: 12px 0;
+		}
+		tr {
+			td {
+				&:last-of-type {
+					text-align: center;
+				}
+			}
+			th {
+				&:last-of-type {
+					text-align: center;
+				}
+			}
+		}
+		td {
+			button.btn {
+				margin: 0 4px;
+			}
+		}
+	}	
+}
